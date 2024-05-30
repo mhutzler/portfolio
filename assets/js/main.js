@@ -153,6 +153,21 @@
     });
   }
 
+   window.onscroll = function() { changeImage() }
+
+    function changeImage() {
+      var scroll = window.scrollY + 100; // Change the scroll threshold to 100px
+
+      [...document.querySelectorAll('.section')].forEach(el => {
+        el.classList.remove('active');
+
+        if(el.offsetTop <= scroll && el.offsetTop + el.offsetHeight > scroll) {
+          document.getElementById('hero').style.backgroundImage = el.getAttribute('data-bg');
+        }
+      });
+    }
+    changeImage();
+
   /**
    * Skills animation
    */
